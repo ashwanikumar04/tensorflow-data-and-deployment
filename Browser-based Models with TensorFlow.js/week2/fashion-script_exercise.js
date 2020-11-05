@@ -23,16 +23,7 @@ function getModel() {
     model.add(tf.layers.conv2d({
         inputShape: [28, 28, 1],
         kernelSize: 3,
-        filters: 16,
-        activation: 'relu'
-    }));
-    model.add(tf.layers.maxPooling2d({
-        poolSize: [2, 2]
-    }));
-
-    model.add(tf.layers.conv2d({
         filters: 32,
-        kernelSize: 3,
         activation: 'relu'
     }));
     model.add(tf.layers.maxPooling2d({
@@ -48,10 +39,19 @@ function getModel() {
         poolSize: [2, 2]
     }));
 
+    model.add(tf.layers.conv2d({
+        filters: 128,
+        kernelSize: 3,
+        activation: 'relu'
+    }));
+    model.add(tf.layers.maxPooling2d({
+        poolSize: [2, 2]
+    }));
+
     model.add(tf.layers.flatten());
 
     model.add(tf.layers.dense({
-        units: 256,
+        units: 128,
         activation: 'relu'
     }));
     model.add(tf.layers.dense({
